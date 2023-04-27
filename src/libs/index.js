@@ -8,7 +8,7 @@ const instance = axios.create({
   headers: {
     "Content-Type": "application/x-www-form-urlencoded",
     "X-RapidAPI-Host": "google-translator9.p.rapidapi.com",
-    "X-RapidAPI-Key": undefined, // process.env.TRANSLATOR_API_KEY
+    "X-RapidAPI-Key": process.env.TRANSLATOR_API_KEY,
   },
   timeout: 3000,
 });
