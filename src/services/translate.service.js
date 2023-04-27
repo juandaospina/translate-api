@@ -11,7 +11,7 @@ class TranslateService {
       return response.data.data.detections[0][0].language;
     })
     .catch(err => {
-      console.log("[/detect_error]", err.response.status)
+      console.log("[/detect_error]", err.response)
       throw Error(err.response.status);
     })
 
@@ -23,16 +23,16 @@ class TranslateService {
     if (source === "auto") {
       language = await this.detectLanguage(text);
     }
-    const res = await instance.post(`/v2?q=${text}&source=${source}&target=${target}`)
+    const result = await instance.post(`/v2?q=${text}&source=${language}&target=${target}`)
       .then(result => {
         return result.data.data.translations[0].translatedText;
       })
       .catch(err => {
-        console.log("[/translate_error]", err.response.status)
+        console.log("[/translate_error]", err.response)
         throw Error(err.response.status)
       })
 
-    return res;
+    return result;
   }
 
   async languages() {
