@@ -6,6 +6,12 @@ const router = express.Router();
 
 const service = new TranslateService();
 
+router.get("/", res => {
+  res.status(200).json({
+    message: "Translate api"
+  })
+})
+
 router.get("/languages", async (req, res, next) => {
   try {
     const response = await service.languages();
