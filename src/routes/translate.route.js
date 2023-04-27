@@ -12,7 +12,7 @@ router.get("/", res => {
   })
 })
 
-router.get("/languages", async (req, res, next) => {
+router.get("/languages", async (res, next) => {
   try {
     const response = await service.languages();
     res.status(200).json(response);
