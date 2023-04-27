@@ -10,10 +10,10 @@ const enableDomains = ['https://translation-web.vercel.app']
 
 // Server
 const app = express();
+app.use(cors());
 // Route
 app.use(translateRoute);
 // Middlewares
-app.use(cors(enableDomains));
 app.use(errorHandler);
 
 module.exports = app;
